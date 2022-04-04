@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>
+Welcome to {{ username }}'s profile.
+</p>
+
+<!-- TODO: Display the user's actual favorites here -->
+
+<p>
+    {{ username }}'s favorite books are:
+
+    <ul>
+        {% for book in user.favorite_books %}
+            <li>
+                <p><strong>{{ book.title }}</strong></p>
+                <p>Author: {{ book.author.name }}</p>
+                <p>Published: {{ book.publish_date }}</p>
+                <p>Genres:</p>
+                {% for genre in book.genres %}
+                    <span>{{ genre.name }},</span>
+                {% endfor %}
+                <p>{{ book.audience }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</p>
+
+{% endblock %}
